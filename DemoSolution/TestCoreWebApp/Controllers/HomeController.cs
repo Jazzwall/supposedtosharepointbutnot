@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TestCoreWebApp.DAL;
 
 namespace TestCoreWebApp.Controllers
 {
@@ -16,6 +17,7 @@ namespace TestCoreWebApp.Controllers
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
+            ViewData["ClassName"] = "This is a SharePoint class...?";
 
             return View();
         }
@@ -32,9 +34,16 @@ namespace TestCoreWebApp.Controllers
             return "Hello World!";
         }
 
+        public IActionResult GetBlogPost()
+        {
+            Post p = new Post() { PostId = 00, Content="ABCDEF", Title="ABC" };
+            return new JsonResult(p);
+        }
+
         public IActionResult Error()
         {
             return View();
         }
+
     }
 }
